@@ -30,17 +30,11 @@ function updateCatDisplay(cat) {
   catImage.src = cat.image;
   catClicks.textContent = "clicks " + cat.clicks;
 
-  // Remove click event listener from the previous cat image
-  if (catImageClickHandler) {
-    catImage.removeEventListener("click", catImageClickHandler);
-  }
-
   // Add click event listener to the cat image
-  catImageClickHandler = function () {
+  catImage.onclick = function () {
     cat.clicks++;
     catClicks.textContent = "clicks " + cat.clicks;
   };
-  catImage.addEventListener("click", catImageClickHandler);
 }
 
 // Call the initializeCatList function to set up the initial state
