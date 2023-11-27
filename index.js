@@ -1,8 +1,4 @@
-// MVC layout
-// controller speaks to the model to get data
-// controller speaks to the view to decide what to show to the client(api/webpage/what you see in the cli output)
-// Write a new cmd line version of the app, which is a new view
-
+// Cat Clicker
 // Model
 // Cat data
 const cats = [
@@ -33,22 +29,24 @@ function updateCatDisplay(cat) {
 // Controller
 // Function to initialize cat list
 function initializeCatList() {
-  //let catListItems = cats //document.querySelectorAll(".cat-name");
   let catList = document.querySelector(".cat-list"); // Get the cat list element
+  // create a dynamic unordered list for the cat list view
   let unorderedList = document.createElement("ul");
-  //<li class="cat-name">Cute Cat 2</li>;
-  // add the class-name and the text contents to the li
-  // after the loop put the ul into the dom need to have an id/class so it know where it goes
   cats.forEach(function (cat, index) {
+    // Create the list items to hold the cat list
     let listElements = document.createElement("li");
+    // Add the list items ts to unordered list
     unorderedList.append(listElements);
-    listElements.append("");
+    // Add the attribute: class to the cat list
+    listElements.setAttribute("class", "cat-name");
+    // Add the cat names to the list
+    listElements.append(cat.name);
     listElements.addEventListener("click", function () {
       updateCatDisplay(cats[index]);
     });
   });
-  // add the ul to the dom
-
+  // Display the unorderedList to the dom/view
+  catList.appendChild(unorderedList);
   updateCatDisplay(cats[0]);
 }
 
